@@ -1,0 +1,30 @@
+optional set lang and keyboard for installer
+get internet access for install environment
+then timedatectl set-ntp true
+
+setup partitrion and file-system
+mount
+pacstrap /mnt base linux linux-firmware etc...
+genfstab -U /mnt >> /mnt/etc/fstab
+
+arch-chroot
+set timezone
+then hwclock --systohc
+
+uncomment languages in locale.gen
+run locale-gen
+create locale.conf (LANG=en_us.UTF-8)
+
+create vconsole.conf (KEYMAP=us)
+create hostname file
+add entries to hosts
+
+optional: run pacman for other things if needed
+grub vim man-pages man-db dhcpcd wget
+
+set root password
+
+setup grub
+grub-install
+optional: modify default grub for serial comm
+grub-mkconfig -o /boot/grub/grub.cfg
