@@ -23,6 +23,7 @@ echo "hostname and keyboard set"
 pacman -S --noconfirm grub vim man-pages man-db && echo "installed man pages, vim, and wget"
 
 #set root password
+echo 'root:root' | chpasswd
 
 #setup grub
 grub-install /dev/sda && echo "grub core img installed"
